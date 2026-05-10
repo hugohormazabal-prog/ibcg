@@ -1,65 +1,506 @@
 import Image from "next/image";
+import Link from "next/link";
+
+const youtubeLiveUrl = "https://www.youtube.com/@IglesiaB%C3%ADblicaCG/streams";
+
+const images = {
+  hero:
+    "https://images.unsplash.com/photo-1763996668109-f540f3346cc2?auto=format&fit=crop&q=82&w=2200",
+  congregation:
+    "https://images.unsplash.com/photo-1763996668109-f540f3346cc2?auto=format&fit=crop&q=82&w=1400",
+  lectern:
+    "https://images.unsplash.com/photo-1742650103852-df4e0734cc39?auto=format&fit=crop&q=82&w=1400",
+};
+
+const solas = [
+  {
+    title: "Sola Scriptura",
+    text: "La Escritura es nuestra autoridad final para la doctrina, la adoración y la vida de la iglesia.",
+  },
+  {
+    title: "Solus Christus",
+    text: "Cristo es el único mediador, cabeza de la iglesia y centro de toda nuestra esperanza.",
+  },
+  {
+    title: "Sola Fide",
+    text: "La justificación es recibida solo por la fe, descansando en la obra suficiente de Cristo.",
+  },
+  {
+    title: "Sola Gratia",
+    text: "La salvación procede de la gracia soberana de Dios, no de mérito humano.",
+  },
+  {
+    title: "Soli Deo Gloria",
+    text: "Toda la vida cristiana, personal y ministerial, existe para la gloria de Dios.",
+  },
+];
+
+const congregationalLife = [
+  {
+    title: "Adoración reverente",
+    text: "Lectura bíblica, oración, canto y predicación bajo la autoridad de Dios.",
+  },
+  {
+    title: "Acompañamiento pastoral",
+    text: "Orientación bíblica para quienes desean recibir enseñanza, oración y cuidado en la fe.",
+  },
+  {
+    title: "Discipulado serio",
+    text: "Formación paciente en la Escritura para crecer en santidad, servicio y perseverancia.",
+  },
+];
+
+const remoteAccess = [
+  {
+    title: "Domingo en vivo",
+    text: "Reunión transmitida por YouTube con predicación expositiva.",
+  },
+  {
+    title: "Biblioteca",
+    text: "Mensajes y series disponibles para escuchar durante la semana.",
+  },
+  {
+    title: "Acompañamiento",
+    text: "Contacto pastoral para oración, orientación y primeros pasos.",
+  },
+];
+
+const resources = [
+  {
+    label: "Para comenzar",
+    title: "Fundamentos de la fe cristiana",
+    text: "Una introducción ordenada a las verdades centrales del evangelio y la vida cristiana.",
+    href: "/recursos/fundamentos-fe-cristiana",
+  },
+  {
+    label: "Doctrina",
+    title: "Introducción a las doctrinas de la gracia",
+    text: "Un recorrido bíblico por la salvación, la soberanía de Dios y la obra de Cristo.",
+    href: "/recursos/doctrinas-de-la-gracia",
+  },
+  {
+    label: "Estudio bíblico",
+    title: "Guía para estudiar la Escritura",
+    text: "Herramientas prácticas para leer, interpretar y aplicar la Palabra con fidelidad.",
+    href: "/recursos/como-estudiar-la-biblia",
+  },
+  {
+    label: "Lectura guiada",
+    title: "Lecturas para crecer en la Palabra",
+    text: "Material recomendado para acompañar la devoción personal y el discipulado.",
+    href: "/recursos/lecturas-crecimiento-espiritual",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <main className="min-h-screen bg-white text-[#17191d]">
+      <section className="relative isolate overflow-hidden border-b border-[#e4e1dc] bg-[#14233a] text-white">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src={images.hero}
+          alt="Personas reunidas alrededor de una Biblia abierta"
+          fill
           priority
+          sizes="100vw"
+          className="absolute inset-0 -z-20 object-cover opacity-82"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(8,15,28,0.8)_0%,rgba(12,22,38,0.58)_48%,rgba(12,22,38,0.24)_100%)]" />
+
+        <header className="border-b border-white/12">
+          <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#inicio"
+              className="flex min-w-0 items-center gap-2.5 text-[0.8rem] font-semibold leading-4"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/92 p-1 ring-1 ring-white/24 sm:h-9 sm:w-9">
+                <Image
+                  src="/logo.png"
+                  alt=""
+                  width={36}
+                  height={36}
+                  className="h-full w-full object-contain"
+                />
+              </span>
+              <span className="max-w-44 sm:max-w-56">
+                Iglesia Bíblica Comunidad de la Gracia
+              </span>
+            </a>
+            <div className="flex shrink-0 items-center gap-3">
+              <div className="hidden items-center gap-5 text-[0.82rem] text-white/74 lg:flex">
+                <Link className="nav-link transition hover:text-white" href="/quienes-somos">
+                  Quiénes somos
+                </Link>
+                <a className="nav-link transition hover:text-white" href="#creemos">
+                  Qué creemos
+                </a>
+                <Link className="nav-link transition hover:text-white" href="/sermones">
+                  Sermones
+                </Link>
+                <a className="nav-link transition hover:text-white" href="#distancia">
+                  Desde otro lugar
+                </a>
+                <a className="nav-link transition hover:text-white" href="#contacto">
+                  Contacto pastoral
+                </a>
+              </div>
+              <details className="group relative lg:hidden">
+                <summary className="button-lift focus-ring flex min-h-8 cursor-pointer list-none items-center border border-white/24 px-3 text-[0.76rem] font-semibold text-white/88 transition hover:border-white/50 hover:bg-white/8 [&::-webkit-details-marker]:hidden">
+                  Menú
+                </summary>
+                <div className="absolute right-0 top-10 z-30 grid min-w-48 gap-1 border border-white/12 bg-[#0b1220] p-2 text-[0.82rem] text-white shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
+                  <Link className="px-3 py-2 transition hover:bg-white/8" href="/quienes-somos">
+                    Quiénes somos
+                  </Link>
+                  <a className="px-3 py-2 transition hover:bg-white/8" href="#creemos">
+                    Qué creemos
+                  </a>
+                  <Link className="px-3 py-2 transition hover:bg-white/8" href="/sermones">
+                    Sermones
+                  </Link>
+                  <a className="px-3 py-2 transition hover:bg-white/8" href="#distancia">
+                    Desde otro lugar
+                  </a>
+                  <a className="px-3 py-2 transition hover:bg-white/8" href="#contacto">
+                    Contacto pastoral
+                  </a>
+                </div>
+              </details>
+              <a
+                href={youtubeLiveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="button-lift focus-ring inline-flex min-h-8 items-center border border-white/24 px-3 text-[0.76rem] font-semibold text-white/88 transition hover:border-white/50 hover:bg-white/8"
+              >
+                En vivo
+              </a>
+            </div>
+          </nav>
+        </header>
+
+        <div
+          id="inicio"
+          className="mx-auto grid min-h-[440px] max-w-5xl items-center px-4 py-10 sm:min-h-[500px] sm:px-6 lg:min-h-[520px]"
+        >
+          <div className="reveal max-w-[42rem]">
+            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#d8c08a]">
+              Iglesia bautista reformada
+            </p>
+            <h1 className="mt-4 max-w-[39rem] text-[1.5rem] font-bold leading-[1.12] tracking-normal sm:text-[1.95rem] lg:text-[2.18rem]">
+              Proclamando fielmente el evangelio de Jesucristo por medio de la
+              enseñanza bíblica transmitida.
+            </h1>
+            <p className="mt-4 max-w-[36rem] text-sm leading-6 text-white/78">
+              Un ministerio bautista reformado bajo la autoridad de la
+              Escritura, con predicación expositiva, adoración reverente y
+              reuniones transmitidas por internet para quienes desean escuchar
+              la Palabra desde cualquier lugar.
+            </p>
+            <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
+              <a
+                href={youtubeLiveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="button-lift focus-ring inline-flex min-h-10 items-center justify-center rounded-sm bg-white px-4 text-[0.82rem] font-semibold text-[#0f1d33] transition hover:bg-[#f1ede4] focus-ring"
+              >
+                Ver transmisión en vivo
+              </a>
+              <Link
+                href="/sermones"
+                className="button-lift focus-ring inline-flex min-h-10 items-center justify-center rounded-sm border border-white/32 px-4 text-[0.82rem] font-semibold text-white transition hover:border-white/60 hover:bg-white/8 focus-ring"
+              >
+                Escuchar predicaciones
+              </Link>
+              <Link
+                href="/quienes-somos"
+                className="button-lift focus-ring hidden min-h-10 items-center justify-center rounded-sm border border-[#d8c08a]/45 px-4 text-[0.82rem] font-semibold text-[#ead9ad] transition hover:bg-[#d8c08a]/10 focus-ring sm:inline-flex"
+              >
+                Conocer nuestra iglesia
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="creemos" className="border-b border-[#e4e1dc] bg-white px-4 py-12 sm:px-6 lg:py-16">
+        <div className="reveal mx-auto max-w-5xl">
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#8a6d35]">
+            Qué creemos
           </p>
+          <div className="mt-4 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+            <div>
+              <h2 className="max-w-2xl text-[1.7rem] font-bold leading-tight text-[#111827] sm:text-[2rem]">
+                Una iglesia bautista reformada, sujeta a la Escritura y centrada
+                en Cristo.
+              </h2>
+              <p className="mt-5 max-w-2xl text-[0.94rem] leading-7 text-[#4d5562]">
+                Reconocemos a las Escrituras como nuestra única regla de fe y a
+                la Confesión Bautista de Londres de 1689 como una exposición
+                sistematizada de sus doctrinas. Esta convicción da forma a la
+                predicación, la adoración y el cuidado pastoral.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  className="button-lift focus-ring inline-flex min-h-10 items-center border border-[#bda36a] px-4 text-[0.82rem] font-semibold text-[#0f1d33]"
+                  href="/quienes-somos"
+                >
+                  Leer quiénes somos
+                </Link>
+                <Link
+                  className="button-lift focus-ring inline-flex min-h-10 items-center border border-[#dedbd5] px-4 text-[0.82rem] font-semibold text-[#0f1d33]"
+                  href="/recursos"
+                >
+                  Recursos doctrinales
+                </Link>
+              </div>
+            </div>
+
+            <div className="border-y border-[#dedbd5]">
+              {solas.map((item, index) => (
+                <details
+                  className="group border-b border-[#dedbd5] last:border-b-0"
+                  key={item.title}
+                  open={index === 0}
+                >
+                  <summary className="grid cursor-pointer list-none grid-cols-[2rem_1fr_auto] items-center gap-3 py-3.5 [&::-webkit-details-marker]:hidden">
+                    <span className="text-[0.7rem] font-semibold text-[#8a6d35]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[0.95rem] font-semibold text-[#0f1d33]">
+                      {item.title}
+                    </span>
+                    <span className="text-[#8a6d35] transition group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="pb-4 pl-8 text-[0.84rem] leading-6 text-[#5e636b]">
+                    {item.text}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section
+        id="predicacion"
+        className="border-b border-[#e4e1dc] bg-[#f6f5f2] px-4 py-12 sm:px-6 lg:py-16"
+      >
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+            <div className="bg-[#0f1d33] px-5 py-6 text-white sm:px-7 sm:py-8">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#d8c08a]">
+                Transmisión dominical
+              </p>
+              <h2 className="mt-4 text-[1.55rem] font-bold leading-tight sm:text-[1.85rem]">
+                Escritura abierta. Cristo anunciado. Iglesia edificada.
+              </h2>
+              <p className="mt-4 max-w-md text-[0.86rem] leading-6 text-white/68">
+                Reunión transmitida por YouTube cada domingo, con lectura
+                bíblica, oración, canto y predicación expositiva.
+              </p>
+              <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+                <a
+                  className="button-lift focus-ring inline-flex min-h-10 items-center justify-center bg-white px-4 text-[0.82rem] font-semibold text-[#0f1d33]"
+                  href={youtubeLiveUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Ver en vivo
+                </a>
+                <Link
+                  className="button-lift focus-ring inline-flex min-h-10 items-center justify-center border border-white/18 px-4 text-[0.82rem] font-semibold text-white hover:bg-white/8"
+                  href="/sermones"
+                >
+                  Ver sermones
+                </Link>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#8a6d35]">
+                Predicación y cuidado
+              </p>
+              <h3 className="mt-3 max-w-xl text-[1.35rem] font-bold leading-tight text-[#111827] sm:text-[1.6rem]">
+                Enseñanza para quienes se reúnen cerca y para quienes acompañan
+                desde lejos.
+              </h3>
+              <div className="mt-6 grid gap-3">
+                {remoteAccess.map((item, index) => (
+                  <div className="border-l-2 border-[#bda36a] bg-white px-4 py-3" key={item.title}>
+                    <p className="text-[0.68rem] font-semibold text-[#8a6d35]">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h4 className="mt-1 text-[0.92rem] font-semibold text-[#0f1d33]">
+                      {item.title}
+                    </h4>
+                    <p className="mt-1 text-[0.82rem] leading-5 text-[#5e636b]">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="border-b border-[#e4e1dc] bg-white px-4 py-12 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr]">
+            <div>
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#8a6d35]">
+                Vida y discipulado
+              </p>
+              <h2 className="mt-3 max-w-md text-[1.45rem] font-bold leading-tight text-[#111827] sm:text-[1.7rem]">
+                Una vida cristiana formada por adoración, cuidado y enseñanza.
+              </h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {congregationalLife.map((item) => (
+                <article className="quiet-card border-t-2 border-[#0f1d33] bg-[#fbfaf7] p-5" key={item.title}>
+                  <h3 className="text-[0.95rem] font-bold text-[#0f1d33]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-[0.82rem] leading-5 text-[#5e636b]">
+                    {item.text}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-[#e4e1dc] bg-[#fbfaf7] px-4 py-12 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#8a6d35]">
+                Recursos doctrinales
+              </p>
+              <h2 className="mt-3 max-w-xl text-[1.35rem] font-bold leading-tight text-[#111827] sm:text-[1.55rem]">
+                Material para aprender, examinar la Escritura y crecer en
+                discipulado.
+              </h2>
+            </div>
+            <Link className="text-link w-fit text-[0.82rem] font-semibold text-[#0f1d33]" href="/recursos">
+              Ver biblioteca completa →
+            </Link>
+          </div>
+          <div className="mt-7 grid gap-px border border-[#dedbd5] bg-[#dedbd5] md:grid-cols-2">
+            {resources.map((resource, index) => (
+              <Link
+                className="group grid grid-cols-[2rem_1fr_auto] items-start gap-3 bg-white p-4 transition hover:bg-[#fbfaf7]"
+                href={resource.href}
+                key={resource.href}
+              >
+                <span className="text-[0.68rem] font-semibold text-[#8a6d35]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span>
+                  <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-[#8a6d35]">
+                    {resource.label}
+                  </span>
+                  <span className="mt-1 block text-[0.95rem] font-semibold text-[#0f1d33]">
+                    {resource.title}
+                  </span>
+                  <span className="mt-2 block text-[0.82rem] leading-5 text-[#5e636b]">
+                    {resource.text}
+                  </span>
+                </span>
+                <span className="text-[#8a6d35] transition group-hover:translate-x-1">→</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contacto"
+        className="bg-[#0f1d33] px-4 py-12 text-white sm:px-6 lg:py-16"
+      >
+        <div className="mx-auto max-w-5xl">
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#d8c08a]">
+            Invitación pastoral
+          </p>
+          <div className="mt-4 grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+            <blockquote className="text-[1.35rem] font-bold leading-tight sm:text-[1.65rem]">
+              Cristo crucificado y resucitado es suficiente para salvar, formar
+              y sostener a su pueblo.
+            </blockquote>
+            <div>
+              <p className="text-[0.86rem] leading-6 text-white/68">
+                Acompáñanos en la enseñanza transmitida y busca, delante del
+                Señor, caminar en comunidad cristiana fiel.
+              </p>
+              <div className="mt-5 grid gap-2">
+                <p className="border border-white/12 px-4 py-3 text-sm text-white/76">
+                  Domingo, 11:00 hrs
+                </p>
+                <div className="border border-white/12 px-4 py-3 text-sm text-white/76">
+                  <p className="font-semibold text-white/88">
+                    Pastor Fernando Herrera
+                  </p>
+                  <a className="text-link mt-1 inline-block" href="tel:+56978562489">
+                    +56 9 7856 2489
+                  </a>
+                </div>
+                <a
+                  className="button-lift focus-ring inline-flex min-h-10 items-center justify-center bg-white px-4 text-[0.82rem] font-semibold text-[#0f1d33] transition hover:bg-[#f1ede4]"
+                  href="https://wa.me/56978562489"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Escribir por WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-[#0b1220] px-4 py-8 text-white sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-5xl flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center bg-white p-1.5 ring-1 ring-white/12">
+                <Image
+                  src="/logo.png"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-contain"
+                />
+              </span>
+              <h2 className="text-[0.95rem] font-semibold leading-snug">
+                Iglesia Bíblica Comunidad de la Gracia
+              </h2>
+            </div>
+            <p className="mt-3 max-w-xl text-[0.8rem] leading-6 text-white/62">
+              Bautista reformada. Centrada en Cristo. Sujeta a la Escritura.
+              Reuniones transmitidas por YouTube para quienes desean recibir
+              enseñanza bíblica fiel.
+            </p>
+          </div>
+          <address className="grid gap-1.5 text-[0.8rem] not-italic text-white/62 md:text-right">
+            <p>Pastor Fernando Herrera</p>
+            <a className="text-link" href="tel:+56978562489">
+              +56 9 7856 2489
+            </a>
+            <a
+              className="text-link"
+              href="https://wa.me/56978562489"
+              rel="noreferrer"
+              target="_blank"
+            >
+              WhatsApp pastoral
+            </a>
+            <p>YouTube: Comunidad de la Gracia</p>
+            <p>Instagram: @comunidaddelagracia</p>
+          </address>
+        </div>
+      </footer>
+    </main>
   );
 }
