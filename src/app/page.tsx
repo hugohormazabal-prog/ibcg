@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "./_components/SiteFooter";
 import { SiteHeader } from "./_components/SiteHeader";
+import { getSermons } from "./sermones/data";
 
 const images = {
   hero:
@@ -11,6 +12,8 @@ const images = {
   lectern:
     "https://images.unsplash.com/photo-1742650103852-df4e0734cc39?auto=format&fit=crop&q=82&w=1400",
 };
+
+export const revalidate = 3600;
 
 const solas = [
   {
@@ -92,7 +95,10 @@ const resources = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const sermons = await getSermons();
+  const sermonPreviews = sermons.slice(-3).reverse();
+
   return (
     <main className="min-h-screen bg-white text-[#17191d]">
       <section className="relative isolate overflow-hidden border-b border-[#e4e1dc] bg-[#14233a] text-white">
@@ -145,6 +151,22 @@ export default function Home() {
               >
                 Conocer nuestra iglesia
               </Link>
+            </div>
+            <div className="mt-8 grid max-w-2xl gap-px border border-white/14 bg-white/14 sm:grid-cols-3">
+              {[
+                ["Reunión dominical", "Domingo 11:00 hrs"],
+                ["Biblioteca", sermons.length ? `${sermons.length} predicaciones` : "Catálogo activo"],
+                ["Contacto pastoral", "+56 9 7856 2489"],
+              ].map(([label, value]) => (
+                <div className="bg-[#0b1220]/44 px-4 py-3 backdrop-blur-sm" key={label}>
+                  <p className="text-[0.64rem] font-semibold uppercase tracking-[0.13em] text-[#d8c08a]">
+                    {label}
+                  </p>
+                  <p className="mt-1 text-[0.82rem] font-semibold text-white/88">
+                    {value}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -269,6 +291,73 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-[#e4e1dc] bg-white px-4 py-12 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#8a6d35]">
+                Últimas predicaciones
+              </p>
+              <h2 className="mt-3 max-w-xl text-[1.35rem] font-bold leading-tight text-[#111827] sm:text-[1.6rem]">
+                Mensajes recientes para escuchar y continuar estudiando durante
+                la semana.
+              </h2>
+            </div>
+            <Link
+              className="text-link inline-flex min-h-8 w-fit items-center text-[0.82rem] font-semibold text-[#0f1d33]"
+              href="/sermones"
+            >
+              Abrir catálogo →
+            </Link>
+          </div>
+
+          <div className="mt-7 grid gap-px border border-[#dedbd5] bg-[#dedbd5] md:grid-cols-3">
+            {(sermonPreviews.length ? sermonPreviews : []).map((sermon) => (
+              <Link
+                className="group bg-[#fbfaf7] p-4 transition hover:bg-white"
+                href="/sermones"
+                key={sermon.id}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-[#8a6d35]">
+                    Predicación {sermon.number}
+                  </span>
+                  <span className="text-[0.68rem] font-semibold text-[#6b7280]">
+                    {sermon.duration}
+                  </span>
+                </div>
+                <h3 className="mt-3 text-[1rem] font-bold leading-snug text-[#0f1d33]">
+                  {sermon.title}
+                </h3>
+                <p className="mt-2 line-clamp-3 text-[0.82rem] leading-5 text-[#5e636b]">
+                  {sermon.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {sermon.references.slice(0, 2).map((reference) => (
+                    <span
+                      className="bg-white px-2 py-1 text-[0.68rem] font-semibold text-[#4d5562] ring-1 ring-[#dedbd5]"
+                      key={reference}
+                    >
+                      {reference}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-link mt-4 inline-flex text-[0.78rem] font-semibold text-[#0f1d33]">
+                  Escuchar y leer →
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          {sermonPreviews.length === 0 ? (
+            <div className="mt-7 border border-[#dedbd5] bg-[#fbfaf7] p-5 text-[0.88rem] leading-6 text-[#5e636b]">
+              La biblioteca se está cargando desde Supabase. Si no aparece,
+              revisa el catálogo de sermones directamente.
+            </div>
+          ) : null}
         </div>
       </section>
 

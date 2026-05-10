@@ -52,6 +52,27 @@ const heritage = [
   },
 ];
 
+const doctrineMap = [
+  {
+    title: "Autoridad",
+    heading: "La Biblia gobierna la fe y la adoración",
+    text: "La iglesia no se define por preferencias, tendencias o tradición humana. Toda enseñanza, práctica y exhortación debe ser examinada a la luz de la Palabra de Dios.",
+    references: ["2 Timoteo 3:16-17", "Hechos 17:11", "Isaías 8:20"],
+  },
+  {
+    title: "Evangelio",
+    heading: "Cristo es suficiente para salvar",
+    text: "El centro de nuestra predicación es la persona y obra de Jesucristo: su vida perfecta, su muerte sustitutiva, su resurrección y su señorío presente.",
+    references: ["1 Corintios 15:3-4", "Hebreos 10:14", "Juan 14:6"],
+  },
+  {
+    title: "Iglesia",
+    heading: "La doctrina debe producir vida visible",
+    text: "La verdad bíblica no termina en información religiosa. Debe formar adoradores humildes, discípulos obedientes y una comunidad que camina en santidad y amor.",
+    references: ["Tito 2:11-14", "Efesios 4:11-16", "1 Pedro 2:9"],
+  },
+];
+
 export const metadata: Metadata = {
   title: "Qué creemos | Iglesia Bíblica Comunidad de la Gracia",
   description:
@@ -165,6 +186,63 @@ export default function QueCreemosPage() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-[#e4e1dc] bg-[#fbfaf7] px-4 py-10 sm:px-6 lg:py-14">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+            <div>
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#8a6d35]">
+                Marco de enseñanza
+              </p>
+              <h2 className="mt-3 max-w-md text-[1.45rem] font-bold leading-tight text-[#111827] sm:text-[1.75rem]">
+                Convicciones que ordenan cómo predicamos, oramos y servimos.
+              </h2>
+              <p className="mt-4 text-[0.9rem] leading-7 text-[#5e636b]">
+                Esta síntesis no pretende reemplazar la Biblia. Su propósito es
+                hacer visible el marco doctrinal que sostiene la vida pública de
+                la iglesia y ayuda a nuevos oyentes a entender desde dónde se
+                enseña.
+              </p>
+            </div>
+
+            <div className="grid gap-px border border-[#dedbd5] bg-[#dedbd5]">
+              {doctrineMap.map((item, index) => (
+                <article
+                  className="grid gap-4 bg-white p-5 sm:grid-cols-[5.5rem_1fr]"
+                  key={item.title}
+                >
+                  <div>
+                    <p className="text-[0.68rem] font-semibold text-[#8a6d35]">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <p className="mt-1 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#4d5562]">
+                      {item.title}
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-[1rem] font-bold leading-snug text-[#0f1d33]">
+                      {item.heading}
+                    </h3>
+                    <p className="mt-2 text-[0.84rem] leading-6 text-[#5e636b]">
+                      {item.text}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {item.references.map((reference) => (
+                        <span
+                          className="bg-[#fbfaf7] px-2 py-1 text-[0.68rem] font-semibold text-[#4d5562] ring-1 ring-[#dedbd5]"
+                          key={reference}
+                        >
+                          {reference}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>

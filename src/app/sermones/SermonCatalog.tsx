@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+import { SiteFooter } from "../_components/SiteFooter";
 import { SiteHeader } from "../_components/SiteHeader";
 import type { Sermon } from "./types";
 
@@ -16,6 +17,7 @@ export default function SermonCatalog({ sermons, topics }: SermonCatalogProps) {
   const [selectedTopic, setSelectedTopic] = useState(allTopicsLabel);
   const [query, setQuery] = useState("");
   const [activeTranscript, setActiveTranscript] = useState<Sermon | null>(null);
+  const featuredSermon = sermons.at(-1) ?? null;
 
   const visibleSermons = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -57,7 +59,7 @@ export default function SermonCatalog({ sermons, topics }: SermonCatalogProps) {
               </p>
             </div>
 
-            <div className="grid gap-4 border border-[#dedbd5] bg-white p-4">
+            <div className="grid gap-4 border border-[#dedbd5] bg-white p-4 shadow-[0_18px_48px_rgba(17,24,39,0.04)]">
               <label className="grid gap-1.5">
                 <span className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#8a6d35]">
                   Buscar
@@ -98,11 +100,66 @@ export default function SermonCatalog({ sermons, topics }: SermonCatalogProps) {
               </div>
             </div>
           </div>
+
+          <div className="mt-5 grid gap-px border border-[#dedbd5] bg-[#dedbd5] sm:grid-cols-3">
+            {[
+              ["Predicaciones", String(sermons.length)],
+              ["Temas", String(topics.length)],
+              ["Formato", "Audio + texto"],
+            ].map(([label, value]) => (
+              <div className="bg-white px-4 py-3" key={label}>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-[#8a6d35]">
+                  {label}
+                </p>
+                <p className="mt-1 text-[0.92rem] font-bold text-[#0f1d33]">
+                  {value}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="px-4 py-8 sm:px-6 lg:py-10">
         <div className="mx-auto max-w-5xl">
+          {featuredSermon ? (
+            <article className="mb-6 grid gap-px border border-[#dedbd5] bg-[#dedbd5] lg:grid-cols-[0.82fr_1.18fr]">
+              <div className="bg-[#0f1d33] p-5 text-white sm:p-6">
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#d8c08a]">
+                  Selección de la biblioteca
+                </p>
+                <h2 className="mt-3 text-[1.25rem] font-bold leading-tight sm:text-[1.5rem]">
+                  {featuredSermon.title}
+                </h2>
+                <p className="mt-3 text-[0.84rem] leading-6 text-white/70">
+                  {featuredSermon.description}
+                </p>
+              </div>
+              <div className="grid gap-4 bg-[#fbfaf7] p-5 sm:p-6">
+                <div className="flex flex-wrap gap-1.5">
+                  {featuredSermon.references.map((reference) => (
+                    <span
+                      className="bg-white px-2 py-1 text-[0.7rem] font-semibold text-[#4d5562] ring-1 ring-[#dedbd5]"
+                      key={reference}
+                    >
+                      {reference}
+                    </span>
+                  ))}
+                </div>
+                <audio className="w-full" controls preload="metadata" src={featuredSermon.audio}>
+                  Tu navegador no puede reproducir este audio.
+                </audio>
+                <button
+                  className="button-lift focus-ring inline-flex min-h-10 w-fit items-center justify-center border border-[#bda36a] bg-white px-4 text-[0.82rem] font-semibold text-[#0f1d33]"
+                  onClick={() => setActiveTranscript(featuredSermon)}
+                  type="button"
+                >
+                  Leer transcripción
+                </button>
+              </div>
+            </article>
+          ) : null}
+
           <div className="flex items-center justify-between gap-4 border-b border-[#dedbd5] pb-3">
             <h2 className="text-[1rem] font-bold text-[#0f1d33]">
               {visibleSermons.length} predicaciones
@@ -136,6 +193,8 @@ export default function SermonCatalog({ sermons, topics }: SermonCatalogProps) {
           sermon={activeTranscript}
         />
       ) : null}
+
+      <SiteFooter />
     </main>
   );
 }
@@ -149,7 +208,7 @@ function SermonCard({
 }) {
   return (
     <article
-      className="quiet-card flex min-h-[24rem] flex-col border border-[#dedbd5] bg-white"
+      className="quiet-card flex min-h-[22rem] flex-col border border-[#dedbd5] bg-white"
       id={`sermon-${sermon.id}`}
     >
       <div className="flex flex-1 flex-col p-4">

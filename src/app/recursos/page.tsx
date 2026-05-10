@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SiteFooter } from "../_components/SiteFooter";
 import { ResourceHeader } from "./_components";
 import { articles } from "./_content";
 
@@ -19,7 +20,7 @@ export default function RecursosPage() {
 
       <section className="border-b border-[#e4e1dc] bg-[#f6f5f2] px-5 py-14 sm:px-8 lg:px-10">
         <div className="reveal mx-auto max-w-7xl">
-          <p className="max-w-3xl text-base leading-8 text-[#565b63]">
+          <p className="max-w-3xl text-[0.94rem] leading-7 text-[#565b63]">
             Estos recursos no buscan reemplazar la lectura directa de la Biblia
             ni la predicación fiel. Su propósito es servir como acompañamiento
             doctrinal para miembros, visitantes y personas de distintos lugares
@@ -36,10 +37,10 @@ export default function RecursosPage() {
               href={`/recursos/${article.slug}`}
               key={article.slug}
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8a6d35]">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#8a6d35]">
                 {article.eyebrow}
               </p>
-              <h2 className="mt-4 text-2xl font-bold leading-tight text-[#111827]">
+              <h2 className="mt-4 text-[1.15rem] font-bold leading-tight text-[#111827]">
                 {article.title}
               </h2>
               <p className="mt-4 text-sm leading-7 text-[#5e636b]">
@@ -67,6 +68,8 @@ export default function RecursosPage() {
           </Link>
         </div>
       </section>
+
+      <SiteFooter />
     </main>
   );
 }
