@@ -51,10 +51,13 @@ export function SiteFooter() {
           </p>
           <div className="mt-4 grid gap-2 text-[0.86rem] text-white/72">
             <p className="font-semibold text-white">Pastor Fernando Herrera</p>
-            <a className="text-link w-fit" href={phoneHref}>
+            <a className="text-link inline-flex min-h-8 w-fit items-center" href={phoneHref}>
               {phoneDisplay}
             </a>
-            <a className="text-link w-fit" href={`mailto:${contactEmail}`}>
+            <a
+              className="text-link inline-flex min-h-8 w-fit items-center"
+              href={`mailto:${contactEmail}`}
+            >
               {contactEmail}
             </a>
             <a
@@ -74,7 +77,11 @@ export function SiteFooter() {
           </p>
           <div className="mt-4 grid gap-2 text-[0.84rem] text-white/66">
             {footerLinks.map((link) => (
-              <Link className="text-link w-fit" href={link.href} key={link.href}>
+              <Link
+                className="text-link inline-flex min-h-8 w-fit items-center"
+                href={link.href}
+                key={link.href}
+              >
                 {link.label}
               </Link>
             ))}

@@ -81,7 +81,7 @@ export default function SermonCatalog({ sermons, topics }: SermonCatalogProps) {
 
                     return (
                       <button
-                        className={`border px-2.5 py-1.5 text-[0.74rem] font-semibold transition ${
+                        className={`min-h-9 border px-3 py-2 text-[0.74rem] font-semibold transition ${
                           active
                             ? "border-[#0f1d33] bg-[#0f1d33] text-white"
                             : "border-[#dedbd5] bg-[#fbfaf7] text-[#4d5562] hover:border-[#bda36a] hover:text-[#0f1d33]"

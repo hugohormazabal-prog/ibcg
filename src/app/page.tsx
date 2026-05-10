@@ -311,7 +311,10 @@ export default function Home() {
                 discipulado.
               </h2>
             </div>
-            <Link className="text-link w-fit text-[0.82rem] font-semibold text-[#0f1d33]" href="/recursos">
+            <Link
+              className="text-link inline-flex min-h-8 w-fit items-center text-[0.82rem] font-semibold text-[#0f1d33]"
+              href="/recursos"
+            >
               Ver biblioteca completa →
             </Link>
           </div>
@@ -369,7 +372,10 @@ export default function Home() {
                   <p className="font-semibold text-white/88">
                     Pastor Fernando Herrera
                   </p>
-                  <a className="text-link mt-1 inline-block" href="tel:+56978562489">
+                  <a
+                    className="text-link mt-1 inline-flex min-h-8 items-center"
+                    href="tel:+56978562489"
+                  >
                     +56 9 7856 2489
                   </a>
                 </div>

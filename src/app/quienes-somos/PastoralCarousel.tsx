@@ -65,13 +65,17 @@ export function PastoralCarousel() {
         {images.map((image, imageIndex) => (
           <button
             aria-label={`Mostrar fotografía ${imageIndex + 1}`}
-            className={`h-1.5 flex-1 rounded-full transition ${
-              imageIndex === index ? "bg-[#0f1d33]" : "bg-[#dedbd5]"
-            }`}
+            className="focus-ring flex min-h-9 flex-1 items-center rounded-full transition"
             key={image.src}
             onClick={() => setIndex(imageIndex)}
             type="button"
-          />
+          >
+            <span
+              className={`h-1.5 w-full rounded-full ${
+                imageIndex === index ? "bg-[#0f1d33]" : "bg-[#dedbd5]"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </aside>
