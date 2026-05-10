@@ -24,6 +24,9 @@ export function ResourceHeader({
           <Link className="nav-link transition hover:text-white" href="/#predicacion">
             Predicación
           </Link>
+          <Link className="nav-link transition hover:text-white" href="/en-vivo">
+            En vivo
+          </Link>
           <Link className="nav-link transition hover:text-white" href="/#contacto">
             Contacto pastoral
           </Link>
@@ -41,6 +44,9 @@ export function ResourceHeader({
             </Link>
             <Link className="px-3 py-2 transition hover:bg-white/8" href="/#predicacion">
               Predicación
+            </Link>
+            <Link className="px-3 py-2 transition hover:bg-white/8" href="/en-vivo">
+              En vivo
             </Link>
             <Link className="px-3 py-2 transition hover:bg-white/8" href="/#contacto">
               Contacto pastoral

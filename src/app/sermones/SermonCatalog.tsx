@@ -66,6 +66,9 @@ export default function SermonCatalog({ sermons, topics }: SermonCatalogProps) {
             <Link className="text-link hidden sm:inline" href="/recursos">
               Recursos
             </Link>
+            <Link className="text-link hidden sm:inline" href="/en-vivo">
+              En vivo
+            </Link>
             <span className="text-[#8a6d35]">Sermones</span>
           </div>
         </nav>

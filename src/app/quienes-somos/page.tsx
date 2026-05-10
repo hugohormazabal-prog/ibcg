@@ -22,6 +22,9 @@ export default function QuienesSomosPage() {
             <Link className="nav-link transition hover:text-white" href="/#predicacion">
               Predicación
             </Link>
+            <Link className="nav-link transition hover:text-white" href="/en-vivo">
+              En vivo
+            </Link>
             <Link className="nav-link transition hover:text-white" href="/#contacto">
               Contacto pastoral
             </Link>
@@ -39,6 +42,9 @@ export default function QuienesSomosPage() {
               </Link>
               <Link className="px-3 py-2 transition hover:bg-white/8" href="/#predicacion">
                 Predicación
+              </Link>
+              <Link className="px-3 py-2 transition hover:bg-white/8" href="/en-vivo">
+                En vivo
               </Link>
               <Link className="px-3 py-2 transition hover:bg-white/8" href="/recursos">
                 Recursos
@@ -102,10 +108,10 @@ export default function QuienesSomosPage() {
             Ver recursos doctrinales
           </Link>
           <Link
-            href="/#predicacion"
+            href="/en-vivo"
             className="button-lift focus-ring inline-flex min-h-11 items-center justify-center rounded-sm bg-[#0f1d33] px-5 text-sm font-semibold text-white transition hover:bg-[#172b4a]"
           >
-            Escuchar predicaciones
+            Ver transmisión en vivo
           </Link>
           <Link
             href="/#contacto"

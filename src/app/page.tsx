@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const youtubeLiveUrl = "https://www.youtube.com/@IglesiaB%C3%ADblicaCG/streams";
+const livePageUrl = "/en-vivo";
 
 const images = {
   hero:
@@ -136,6 +136,9 @@ export default function Home() {
                 <Link className="nav-link transition hover:text-white" href="/sermones">
                   Sermones
                 </Link>
+                <Link className="nav-link transition hover:text-white" href={livePageUrl}>
+                  En vivo
+                </Link>
                 <a className="nav-link transition hover:text-white" href="#distancia">
                   Desde otro lugar
                 </a>
@@ -157,6 +160,9 @@ export default function Home() {
                   <Link className="px-3 py-2 transition hover:bg-white/8" href="/sermones">
                     Sermones
                   </Link>
+                  <Link className="px-3 py-2 transition hover:bg-white/8" href={livePageUrl}>
+                    En vivo
+                  </Link>
                   <a className="px-3 py-2 transition hover:bg-white/8" href="#distancia">
                     Desde otro lugar
                   </a>
@@ -165,14 +171,12 @@ export default function Home() {
                   </a>
                 </div>
               </details>
-              <a
-                href={youtubeLiveUrl}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href={livePageUrl}
                 className="button-lift focus-ring inline-flex min-h-8 items-center border border-white/24 px-3 text-[0.76rem] font-semibold text-white/88 transition hover:border-white/50 hover:bg-white/8"
               >
                 En vivo
-              </a>
+              </Link>
             </div>
           </nav>
         </header>
@@ -196,14 +200,12 @@ export default function Home() {
               la Palabra desde cualquier lugar.
             </p>
             <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
-              <a
-                href={youtubeLiveUrl}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href={livePageUrl}
                 className="button-lift focus-ring inline-flex min-h-10 items-center justify-center rounded-sm bg-white px-4 text-[0.82rem] font-semibold text-[#0f1d33] transition hover:bg-[#f1ede4] focus-ring"
               >
                 Ver transmisión en vivo
-              </a>
+              </Link>
               <Link
                 href="/sermones"
                 className="button-lift focus-ring inline-flex min-h-10 items-center justify-center rounded-sm border border-white/32 px-4 text-[0.82rem] font-semibold text-white transition hover:border-white/60 hover:bg-white/8 focus-ring"
@@ -300,14 +302,12 @@ export default function Home() {
                 bíblica, oración, canto y predicación expositiva.
               </p>
               <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-                <a
+                <Link
                   className="button-lift focus-ring inline-flex min-h-10 items-center justify-center bg-white px-4 text-[0.82rem] font-semibold text-[#0f1d33]"
-                  href={youtubeLiveUrl}
-                  rel="noreferrer"
-                  target="_blank"
+                  href={livePageUrl}
                 >
                   Ver en vivo
-                </a>
+                </Link>
                 <Link
                   className="button-lift focus-ring inline-flex min-h-10 items-center justify-center border border-white/18 px-4 text-[0.82rem] font-semibold text-white hover:bg-white/8"
                   href="/sermones"
