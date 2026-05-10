@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
-import type { Sermon } from "./_data";
+import type { Sermon } from "./types";
 
 type SermonCatalogProps = {
   sermons: readonly Sermon[];
@@ -151,6 +151,12 @@ export default function SermonCatalog({ sermons, topics }: SermonCatalogProps) {
               />
             ))}
           </div>
+
+          {visibleSermons.length === 0 ? (
+            <div className="mt-5 border border-[#dedbd5] bg-[#fbfaf7] p-5 text-[0.9rem] leading-6 text-[#5e636b]">
+              No hay sermones disponibles para este filtro.
+            </div>
+          ) : null}
         </div>
       </section>
 
