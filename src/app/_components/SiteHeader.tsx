@@ -57,7 +57,7 @@ export function SiteHeader({ active, variant = "dark" }: SiteHeaderProps) {
         <div className="hidden items-center gap-4 text-[0.78rem] text-white/74 lg:flex xl:gap-5 xl:text-[0.82rem]">
           {navItems.map((item) => (
             <Link
-              className={`nav-link transition hover:text-white ${
+              className={`nav-link inline-flex min-h-8 items-center transition hover:text-white ${
                 active === item.key ? "text-white" : ""
               }`}
               href={item.href}
