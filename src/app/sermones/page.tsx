@@ -10,6 +10,10 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
+const fallbackSupabaseUrl = "https://vmxolnsyvxgghizmcllk.supabase.co";
+const fallbackSupabaseAnonKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZteG9sbnN5dnhnZ2hpem1jbGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0Mjc4ODcsImV4cCI6MjA5NDAwMzg4N30.QqCrjXx8mE7TxEDkO3EKWfojxeEdya5BdhfRXzw0vWU";
+
 type SermonRow = {
   slug: string;
   number: number;
@@ -28,12 +32,18 @@ type SermonRow = {
 };
 
 async function getSermons(): Promise<readonly Sermon[]> {
-  const supabaseUrl = process.env.ibcgstorage_SUPABASE_URL;
-  const anonKey = process.env.NEXT_PUBLIC_ibcgstorage_SUPABASE_ANON_KEY;
-
-  if (!supabaseUrl || !anonKey) {
-    return [];
-  }
+  const supabaseUrl =
+    process.env.ibcgstorage_SUPABASE_URL ??
+    process.env.NEXT_PUBLIC_ibcgstorage_SUPABASE_URL ??
+    process.env.NEXT_PUBLIC_SUPABASE_URL ??
+    process.env.SUPABASE_URL ??
+    fallbackSupabaseUrl;
+  const anonKey =
+    process.env.NEXT_PUBLIC_ibcgstorage_SUPABASE_ANON_KEY ??
+    process.env.ibcgstorage_SUPABASE_PUBLISHABLE_KEY ??
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+    process.env.SUPABASE_ANON_KEY ??
+    fallbackSupabaseAnonKey;
 
   try {
     const response = await fetch(

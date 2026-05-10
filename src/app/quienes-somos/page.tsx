@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { SiteFooter } from "../_components/SiteFooter";
+import { SiteHeader } from "../_components/SiteHeader";
 import { PastoralCarousel } from "./PastoralCarousel";
 
 export const metadata = {
@@ -10,52 +12,7 @@ export const metadata = {
 export default function QuienesSomosPage() {
   return (
     <main className="min-h-screen bg-white text-[#17191d]">
-      <header className="border-b border-[#e4e1dc] bg-[#0b1220] text-white">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
-          <Link href="/" className="text-link max-w-64 text-sm font-semibold leading-5">
-            Iglesia Bíblica Comunidad de la Gracia
-          </Link>
-          <div className="hidden items-center gap-7 text-sm text-white/72 md:flex">
-            <Link className="nav-link transition hover:text-white" href="/#creemos">
-              Qué creemos
-            </Link>
-            <Link className="nav-link transition hover:text-white" href="/#predicacion">
-              Predicación
-            </Link>
-            <Link className="nav-link transition hover:text-white" href="/en-vivo">
-              En vivo
-            </Link>
-            <Link className="nav-link transition hover:text-white" href="/#contacto">
-              Contacto pastoral
-            </Link>
-          </div>
-          <details className="group relative md:hidden">
-            <summary className="button-lift focus-ring flex min-h-9 cursor-pointer list-none items-center border border-white/24 px-3 text-sm font-semibold text-white/88 transition hover:border-white/50 hover:bg-white/8 [&::-webkit-details-marker]:hidden">
-              Menú
-            </summary>
-            <div className="absolute right-0 top-11 z-30 grid min-w-48 gap-1 border border-white/12 bg-[#0b1220] p-2 text-sm text-white shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
-              <Link className="px-3 py-2 transition hover:bg-white/8" href="/">
-                Inicio
-              </Link>
-              <Link className="px-3 py-2 transition hover:bg-white/8" href="/#creemos">
-                Qué creemos
-              </Link>
-              <Link className="px-3 py-2 transition hover:bg-white/8" href="/#predicacion">
-                Predicación
-              </Link>
-              <Link className="px-3 py-2 transition hover:bg-white/8" href="/en-vivo">
-                En vivo
-              </Link>
-              <Link className="px-3 py-2 transition hover:bg-white/8" href="/recursos">
-                Recursos
-              </Link>
-              <Link className="px-3 py-2 transition hover:bg-white/8" href="/#contacto">
-                Contacto pastoral
-              </Link>
-            </div>
-          </details>
-        </nav>
-      </header>
+      <SiteHeader active="quienes-somos" />
 
       <section className="border-b border-[#e4e1dc] bg-[#f6f5f2]">
         <div className="reveal mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[0.86fr_1.14fr] lg:px-10 lg:py-16">
@@ -121,6 +78,8 @@ export default function QuienesSomosPage() {
           </Link>
         </div>
       </section>
+
+      <SiteFooter />
     </main>
   );
 }

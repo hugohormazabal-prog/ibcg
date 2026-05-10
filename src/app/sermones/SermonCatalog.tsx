@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+import { SiteHeader } from "../_components/SiteHeader";
 import type { Sermon } from "./types";
 
 type SermonCatalogProps = {
@@ -40,39 +39,7 @@ export default function SermonCatalog({ sermons, topics }: SermonCatalogProps) {
 
   return (
     <main className="min-h-screen bg-white text-[#17191d]">
-      <header className="border-b border-[#dedbd5] bg-white">
-        <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-          <Link
-            href="/"
-            className="flex min-w-0 items-center gap-2.5 text-[0.8rem] font-semibold leading-4 text-[#0f1d33]"
-          >
-            <span className="grid h-8 w-8 shrink-0 place-items-center bg-white p-1 ring-1 ring-[#dedbd5] sm:h-9 sm:w-9">
-              <Image
-                src="/logo.png"
-                alt=""
-                width={36}
-                height={36}
-                className="h-full w-full object-contain"
-              />
-            </span>
-            <span className="max-w-44 sm:max-w-56">
-              Iglesia Bíblica Comunidad de la Gracia
-            </span>
-          </Link>
-          <div className="flex shrink-0 items-center gap-4 text-[0.82rem] font-semibold text-[#4d5562]">
-            <Link className="text-link hidden sm:inline" href="/">
-              Inicio
-            </Link>
-            <Link className="text-link hidden sm:inline" href="/recursos">
-              Recursos
-            </Link>
-            <Link className="text-link hidden sm:inline" href="/en-vivo">
-              En vivo
-            </Link>
-            <span className="text-[#8a6d35]">Sermones</span>
-          </div>
-        </nav>
-      </header>
+      <SiteHeader active="sermones" />
 
       <section className="border-b border-[#e4e1dc] bg-[#fbfaf7] px-4 py-7 sm:px-6 lg:py-9">
         <div className="mx-auto max-w-5xl">

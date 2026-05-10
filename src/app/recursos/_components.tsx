@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SiteHeader } from "../_components/SiteHeader";
 import type { ResourceArticle } from "./_content";
 import { articles } from "./_content";
 
@@ -12,60 +13,22 @@ export function ResourceHeader({
   description: string;
 }) {
   return (
-    <header className="border-b border-[#e4e1dc] bg-[#0b1220] text-white">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
-        <Link href="/" className="text-link max-w-64 text-sm font-semibold leading-5">
-          Iglesia Bíblica Comunidad de la Gracia
-        </Link>
-        <div className="hidden items-center gap-7 text-sm text-white/72 md:flex">
-          <Link className="nav-link transition hover:text-white" href="/quienes-somos">
-            Quiénes somos
-          </Link>
-          <Link className="nav-link transition hover:text-white" href="/#predicacion">
-            Predicación
-          </Link>
-          <Link className="nav-link transition hover:text-white" href="/en-vivo">
-            En vivo
-          </Link>
-          <Link className="nav-link transition hover:text-white" href="/#contacto">
-            Contacto pastoral
-          </Link>
+    <>
+      <SiteHeader active="recursos" />
+      <section className="border-b border-[#e4e1dc] bg-[#0b1220] text-white">
+        <div className="reveal mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d8c08a]">
+            {eyebrow}
+          </p>
+          <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-tight tracking-normal sm:text-5xl">
+            {title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-white/74">
+            {description}
+          </p>
         </div>
-        <details className="group relative md:hidden">
-          <summary className="button-lift focus-ring flex min-h-9 cursor-pointer list-none items-center border border-white/24 px-3 text-sm font-semibold text-white/88 transition hover:border-white/50 hover:bg-white/8 [&::-webkit-details-marker]:hidden">
-            Menú
-          </summary>
-          <div className="absolute right-0 top-11 z-30 grid min-w-48 gap-1 border border-white/12 bg-[#0b1220] p-2 text-sm text-white shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
-            <Link className="px-3 py-2 transition hover:bg-white/8" href="/">
-              Inicio
-            </Link>
-            <Link className="px-3 py-2 transition hover:bg-white/8" href="/quienes-somos">
-              Quiénes somos
-            </Link>
-            <Link className="px-3 py-2 transition hover:bg-white/8" href="/#predicacion">
-              Predicación
-            </Link>
-            <Link className="px-3 py-2 transition hover:bg-white/8" href="/en-vivo">
-              En vivo
-            </Link>
-            <Link className="px-3 py-2 transition hover:bg-white/8" href="/#contacto">
-              Contacto pastoral
-            </Link>
-          </div>
-        </details>
-      </nav>
-      <div className="reveal mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d8c08a]">
-          {eyebrow}
-        </p>
-        <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-tight tracking-normal sm:text-5xl">
-          {title}
-        </h1>
-        <p className="mt-6 max-w-2xl text-base leading-8 text-white/74">
-          {description}
-        </p>
-      </div>
-    </header>
+      </section>
+    </>
   );
 }
 

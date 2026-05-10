@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const livePageUrl = "/en-vivo";
+import { SiteFooter } from "./_components/SiteFooter";
+import { SiteHeader } from "./_components/SiteHeader";
 
 const images = {
   hero:
@@ -106,80 +106,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(8,15,28,0.8)_0%,rgba(12,22,38,0.58)_48%,rgba(12,22,38,0.24)_100%)]" />
 
-        <header className="border-b border-white/12">
-          <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-            <a
-              href="#inicio"
-              className="flex min-w-0 items-center gap-2.5 text-[0.8rem] font-semibold leading-4"
-            >
-              <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/92 p-1 ring-1 ring-white/24 sm:h-9 sm:w-9">
-                <Image
-                  src="/logo.png"
-                  alt=""
-                  width={36}
-                  height={36}
-                  className="h-full w-full object-contain"
-                />
-              </span>
-              <span className="max-w-44 sm:max-w-56">
-                Iglesia Bíblica Comunidad de la Gracia
-              </span>
-            </a>
-            <div className="flex shrink-0 items-center gap-3">
-              <div className="hidden items-center gap-5 text-[0.82rem] text-white/74 lg:flex">
-                <Link className="nav-link transition hover:text-white" href="/quienes-somos">
-                  Quiénes somos
-                </Link>
-                <a className="nav-link transition hover:text-white" href="#creemos">
-                  Qué creemos
-                </a>
-                <Link className="nav-link transition hover:text-white" href="/sermones">
-                  Sermones
-                </Link>
-                <Link className="nav-link transition hover:text-white" href={livePageUrl}>
-                  En vivo
-                </Link>
-                <a className="nav-link transition hover:text-white" href="#distancia">
-                  Desde otro lugar
-                </a>
-                <a className="nav-link transition hover:text-white" href="#contacto">
-                  Contacto pastoral
-                </a>
-              </div>
-              <details className="group relative lg:hidden">
-                <summary className="button-lift focus-ring flex min-h-8 cursor-pointer list-none items-center border border-white/24 px-3 text-[0.76rem] font-semibold text-white/88 transition hover:border-white/50 hover:bg-white/8 [&::-webkit-details-marker]:hidden">
-                  Menú
-                </summary>
-                <div className="absolute right-0 top-10 z-30 grid min-w-48 gap-1 border border-white/12 bg-[#0b1220] p-2 text-[0.82rem] text-white shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
-                  <Link className="px-3 py-2 transition hover:bg-white/8" href="/quienes-somos">
-                    Quiénes somos
-                  </Link>
-                  <a className="px-3 py-2 transition hover:bg-white/8" href="#creemos">
-                    Qué creemos
-                  </a>
-                  <Link className="px-3 py-2 transition hover:bg-white/8" href="/sermones">
-                    Sermones
-                  </Link>
-                  <Link className="px-3 py-2 transition hover:bg-white/8" href={livePageUrl}>
-                    En vivo
-                  </Link>
-                  <a className="px-3 py-2 transition hover:bg-white/8" href="#distancia">
-                    Desde otro lugar
-                  </a>
-                  <a className="px-3 py-2 transition hover:bg-white/8" href="#contacto">
-                    Contacto pastoral
-                  </a>
-                </div>
-              </details>
-              <Link
-                href={livePageUrl}
-                className="button-lift focus-ring inline-flex min-h-8 items-center border border-white/24 px-3 text-[0.76rem] font-semibold text-white/88 transition hover:border-white/50 hover:bg-white/8"
-              >
-                En vivo
-              </Link>
-            </div>
-          </nav>
-        </header>
+        <SiteHeader active="inicio" variant="hero" />
 
         <div
           id="inicio"
@@ -201,7 +128,7 @@ export default function Home() {
             </p>
             <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
               <Link
-                href={livePageUrl}
+                href="/en-vivo"
                 className="button-lift focus-ring inline-flex min-h-10 items-center justify-center rounded-sm bg-white px-4 text-[0.82rem] font-semibold text-[#0f1d33] transition hover:bg-[#f1ede4] focus-ring"
               >
                 Ver transmisión en vivo
@@ -243,9 +170,9 @@ export default function Home() {
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   className="button-lift focus-ring inline-flex min-h-10 items-center border border-[#bda36a] px-4 text-[0.82rem] font-semibold text-[#0f1d33]"
-                  href="/quienes-somos"
+                  href="/que-creemos"
                 >
-                  Leer quiénes somos
+                  Leer qué creemos
                 </Link>
                 <Link
                   className="button-lift focus-ring inline-flex min-h-10 items-center border border-[#dedbd5] px-4 text-[0.82rem] font-semibold text-[#0f1d33]"
@@ -304,7 +231,7 @@ export default function Home() {
               <div className="mt-6 flex flex-col gap-2 sm:flex-row">
                 <Link
                   className="button-lift focus-ring inline-flex min-h-10 items-center justify-center bg-white px-4 text-[0.82rem] font-semibold text-[#0f1d33]"
-                  href={livePageUrl}
+                  href="/en-vivo"
                 >
                   Ver en vivo
                 </Link>
@@ -460,47 +387,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-[#0b1220] px-4 py-8 text-white sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-5xl flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-xl">
-            <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 shrink-0 place-items-center bg-white p-1.5 ring-1 ring-white/12">
-                <Image
-                  src="/logo.png"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="h-full w-full object-contain"
-                />
-              </span>
-              <h2 className="text-[0.95rem] font-semibold leading-snug">
-                Iglesia Bíblica Comunidad de la Gracia
-              </h2>
-            </div>
-            <p className="mt-3 max-w-xl text-[0.8rem] leading-6 text-white/62">
-              Bautista reformada. Centrada en Cristo. Sujeta a la Escritura.
-              Reuniones transmitidas por YouTube para quienes desean recibir
-              enseñanza bíblica fiel.
-            </p>
-          </div>
-          <address className="grid gap-1.5 text-[0.8rem] not-italic text-white/62 md:text-right">
-            <p>Pastor Fernando Herrera</p>
-            <a className="text-link" href="tel:+56978562489">
-              +56 9 7856 2489
-            </a>
-            <a
-              className="text-link"
-              href="https://wa.me/56978562489"
-              rel="noreferrer"
-              target="_blank"
-            >
-              WhatsApp pastoral
-            </a>
-            <p>YouTube: Comunidad de la Gracia</p>
-            <p>Instagram: @comunidaddelagracia</p>
-          </address>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
